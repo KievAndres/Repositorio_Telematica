@@ -16,7 +16,7 @@ hostname
 ```
 
 -----------------------------
-SERVIDOR DNS MAESTRO PRIMARIO
+SERVIDOR DNS MAESTRO
 -----------------------------
 
 ## named.conf.local
@@ -79,12 +79,12 @@ nameserver [IP del Servidor DNS]
 ```
 
 -------------------------------
-SERVIDOR DNS MAESTRO SECUNDARIO
+SERVIDOR DNS ESCLAVO
 -------------------------------
 
-## MAQUINA DNS SECUNDARIO
+## MAQUINA DNS ESCLAvo
 
-Añadir en /etc/bind/named.conf.local del DNS secundario
+Añadir en /etc/bind/named.conf.local del DNS esclavo
 ```
 zone "dominio" {
 type slave;
