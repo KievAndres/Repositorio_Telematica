@@ -82,7 +82,7 @@ nameserver [IP del Servidor DNS]
 SERVIDOR DNS ESCLAVO
 -------------------------------
 
-## MAQUINA DNS ESCLAvo
+## MAQUINA DNS ESCLAVO
 
 Añadir en /etc/bind/named.conf.local del DNS esclavo
 ```
