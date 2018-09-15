@@ -73,9 +73,9 @@ Maquina]	A	[IP Maquina]
 
 ## /etc/resolv.conf
 ```
-domain proyecto2.com
-search proyecto2.com
-nameserver 192.168.0.50
+domain [tudominio]
+search [tudominio]
+nameserver [IP del Servidor DNS]
 ```
 
 -------------------------------
@@ -88,29 +88,29 @@ Añadir en /etc/bind/named.conf.local del DNS secundario
 ```
 zone "dominio" {
 type slave;
-file "/etc/bind/ieslapaloma.db";
-masters { 192.168.0.50; };
+file "/etc/bind/db.[dominio].2";
+masters { [IP del servidor DNS maestro]; };
 };
 
 zone "0.168.192.in-addr.arpa" {
 type slave;
-file "/etc/bind/192.rev";
-masters { 192.168.0.50; };
+file "/etc/bind/db.192.2";
+masters { [IP del servidor DNS maestro]; };
 }; 
 ```
-## MAQUINA DNS PRIMARIO
+## MAQUINA DNS MAESTRO
 
-Añadir linea en /etc/bind/db.[dominio] del DNS primario
+Añadir linea en /etc/bind/db.[dominio] del DNS maestro
 
 	IN	dns2.[dominio]
 
-Añadir linea en /etc/bind/db.192 del DNS primario
+Añadir linea en /etc/bind/db.192 del DNS maestro
 
 	IN	dns2.[dominio]
 
 ### Archivo /etc/bind/named.conf.local del maestro
 ```
-zone "ieslapaloma.com" {
+zone "[tudominio].com" {
 type master;
 file "/etc/bind/db.[dominio]";
 also-notify {ip_del_esclavo;}
